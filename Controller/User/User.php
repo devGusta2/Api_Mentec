@@ -1,5 +1,5 @@
 <?php
-public class User{
+class User{
     //atributos
     private string $email;
     private string $password;
