@@ -1,10 +1,10 @@
 <?php
 class User{
     //atributos
-    private string $email;
-    private string $password;
-    private string $name;
-    private string $cpf;
+    protected string $email;
+    protected string $password;
+    protected string $name;
+    protected string $cpf;
     
     // Metodos setters
     public function setEmail($email){
