@@ -19,17 +19,21 @@ class Aunthenticator{
     }
 
     public function authentication(){
-        switch($role):
-            case ("Aluno")
-            $user = new Aluno();
-            break;
-            case("Mentor")
-            $user = new Mentor();
-            break;
-            case("adm")
-            $user = new Adm();
-            break;
+        if($email == $email_db && $senha == $senha_db){
+            switch($role):
+                case ("Aluno")
+                $user = new Aluno();
+                session_start(['id']);
+                break;
+                case("Mentor")
+                $user = new Mentor();
+                break;
+                case("adm")
+                $user = new Adm();
+                break;
+        }
     }
+    return $user;
 }
 
 ?>
