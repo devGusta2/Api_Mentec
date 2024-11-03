@@ -13,13 +13,22 @@ class Aunthenticator{
     public function login($email, $password){
         $con = $this->db->getCon();
         // query sql
-        $query = "SELECT * FROM tbUser WHERE :email AND :password";
+        $query = "SELECT senha, email, tiop FROM tbUser WHERE :email AND :senha";
         $stmt = $con->prepare($query);
         $stmt -> execute();
     }
 
     public function authentication(){
-        
+        switch($role):
+            case ("Aluno")
+            $user = new Aluno();
+            break;
+            case("Mentor")
+            $user = new Mentor();
+            break;
+            case("adm")
+            $user = new Adm();
+            break;
     }
 }
 
