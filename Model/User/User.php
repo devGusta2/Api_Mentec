@@ -29,8 +29,8 @@ class User{
         return $this->$name;
     }
 
-    public function cadastro(){
-        
+    public function registration(){
+
     }
     
 }
