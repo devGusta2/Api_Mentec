@@ -20,13 +20,13 @@ class User{
     // Metodos getters
 
     public function getEmail(){
-        return $this->$email;
+        return $this->email;
     }
     public function getPassword(){
-        return $this -> $password;
+        return $this -> password;
     }
     public function getName(){
-        return $this->$name;
+        return $this->name;
     }
 
     public function registration(){
