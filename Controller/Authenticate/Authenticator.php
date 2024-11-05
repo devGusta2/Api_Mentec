@@ -1,14 +1,14 @@
 <?php
 require_once 'User.php';
-require_once 'Database.php';
+require_once '../../Model/Dao/Database.php';
 
 class Aunthenticator{
     // atributos
     private $db;
     // construtor
-    public function __construct() {
-        $this -> $db = new Database(); 
-    }
+    // public function __construct() {
+    //     $this -> $db = new Database(); 
+    // }
     // metodo de login
     public function login($email, $password){
         $con = $this->db->getCon();
@@ -19,21 +19,10 @@ class Aunthenticator{
     }
 
     public function authentication(){
-        if($email == $email_db && $senha == $senha_db){
-            switch($role):
-                case ("Aluno")
-                $user = new Aluno();
-                session_start(['id']);
-                break;
-                case("Mentor")
-                $user = new Mentor();
-                break;
-                case("adm")
-                $user = new Adm();
-                break;
-        }
+      
+        
     }
-    return $user;
+   
 }
 
 ?>
