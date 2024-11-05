@@ -44,7 +44,7 @@ class Mentorships{
     public function setMethod($methods){
         $this->methods = $methods;
     }
-    public function setTeacher(){
+    public function setTeacher($teacher){
         $this->teacher = $teacher;
     }
     public function setPlace($place){
@@ -62,6 +62,58 @@ class Mentorships{
     public function setDuration($duration){
         $this->duration = $duration;
     }
+
+    //metodos getters
+    public function getTitle(){
+        return $this->title;
+    }
+    public function getDesc(){
+        return $this->description;
+    }
+    public function getTarget(){
+        return $this->target;
+    }
+    public function getGoals(){
+        return $this->goals;
+    }
+    public function getContent(){
+        return $this->content;
+    }
+    public function getFreq(){
+        require $this->frequency;
+    }
+    public function getRequi() {
+        return $this->requirements;
+    }
+
+    public function getMethod() {
+        return $this->methods;
+    }
+
+    public function getTeacher() {
+        return $this->teacher;
+    }
+
+    public function getPlace() {
+        return $this->place;
+    }
+
+    public function getFeedback() {
+        return $this->feedback;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function getDateBegin() {
+        return $this->date_begin;
+    }
+
+    public function getDuration() {
+        return $this->duration;
+    }
+
 }
 
 
