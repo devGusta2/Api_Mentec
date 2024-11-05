@@ -15,7 +15,7 @@ class Mentorships{
     private string $payment;
     private string $feedback;
 
-    private double $price;
+    private float $price;
     private DateTime $date_begin;    
     private int $duration;
 
@@ -33,7 +33,7 @@ class Mentorships{
         $this->goals = $goals;
     }
     public function setContent($content){
-        $this->content = $content
+        $this->content = $content;
     }
     public function setFreq($frequnecy){
         $this->frequency=$frequnecy;
@@ -51,7 +51,7 @@ class Mentorships{
         $this->place = $place;
     }
     public function setPayment($feedback){
-        $this->feedback = $feedback
+        $this->feedback = $feedback;
     }
     public function setPrice($price){
         $this->price = $price;
@@ -114,6 +114,52 @@ class Mentorships{
         return $this->duration;
     }
 
+
+
+    function mentorShipRegistration(
+        $title,
+        $description,
+        $target,
+        $goals,
+        $content,
+        $frequency,
+        $requirements,
+        $methods,
+        $teacher,
+        $place,
+        $payment,
+        $feedback,
+        $price,
+        $date_begin,
+        $duration,
+        ){
+        //instancia a conexão
+        $dao = new Database();
+        // pega o metodo de buscar a conexao
+        $conn = $dao->getCon();
+
+        //SQL
+        $query = "INSERT INTO Mentorias(
+            titulo, 
+            descricao, 
+            publico_alvo, 
+            objetivos, 
+            conteudo_programatico, 
+            duracao, 
+            frequencia, 
+            requisitos, 
+            metodologia, 
+            instrutor, 
+            data_inicio, 
+            local, 
+            valor, 
+            forma_pagamento, 
+            feedback
+        ) VALUES (
+            
+        )";
+
+    }
 }
 
 
