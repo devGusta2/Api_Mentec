@@ -162,5 +162,15 @@ class Mentorships{
     }
 }
 
+//conteuco
+//frequencia
 
+//requisitos
+//metodologia
+//instrutor
+//data inicio
+//local
+//valor
+//form pgto
+//feedback
 ?>
