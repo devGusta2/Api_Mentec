@@ -162,15 +162,40 @@ class Mentorships{
     }
 }
 
+//Função para buscar mentorias do banco
+function fetchMentorships(){
+    include_once('../Dao/Database.php');
+    //cria um novo objeto de banco de dados
+    $dao = new Database();
+    //obtem a coxão com o banco 
+    $conn = $dao -> getCon();
+    //como vou buscar as mentorias 
+    $query = "SELECT * FROM mentorias";
+    //prepara, se eu nao me engano contra SQL INJECTION
+    $stmt = $conn -> prepare($query);
+    //executa
+    $stmt -> execute();
+    //armazenando os dados em array
+    $res = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    //retorna para o controller
+    return $res;
+}
+
+
+
 //conteuco
 //frequencia
+//metodologia
 
 //requisitos
-//metodologia
+
 //instrutor
+
 //data inicio
 //local
 //valor
 //form pgto
 //feedback
+
+
 ?>
