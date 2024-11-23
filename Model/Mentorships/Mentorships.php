@@ -160,11 +160,13 @@ class Mentorships{
         )";
 
     }
-}
 
-//Função para buscar mentorias do banco
+
+   
+
+    //Função para buscar mentorias do banco
 function fetchMentorships(){
-    include_once('../Dao/Database.php');
+    include_once('../../Model/Dao/Database.php');
     //cria um novo objeto de banco de dados
     $dao = new Database();
     //obtem a coxão com o banco 
@@ -178,8 +180,20 @@ function fetchMentorships(){
     //armazenando os dados em array
     $res = $stmt -> fetchAll(PDO::FETCH_ASSOC);
     //retorna para o controller
-    return $res;
+    $data = [];
+    foreach ($res as $row) {
+        // Acessa os dados de cada mentoria
+        $data[0] = $row['id'];
+        $data[1] = $row['titulo']; // Exemplo
+        $data[2] = $row['descricao'];
+        $data[3] = $row['objetivos'];
+        $data[4] = $row['duracao'];
+    }
+    return $data;
 }
+
+}
+
 
 
 
