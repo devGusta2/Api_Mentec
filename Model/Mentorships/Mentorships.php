@@ -178,18 +178,20 @@ function fetchMentorships(){
     //executa
     $stmt -> execute();
     //armazenando os dados em array
-    $res = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-    //retorna para o controller
-    $data = [];
-    foreach ($res as $row) {
-        // Acessa os dados de cada mentoria
-        $data[0] = $row['id'];
-        $data[1] = $row['titulo']; // Exemplo
-        $data[2] = $row['descricao'];
-        $data[3] = $row['objetivos'];
-        $data[4] = $row['duracao'];
+    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Pega todos os dados do banco de dados
+    // Agora, use o array $res para preencher o array $formattedData
+    $formattedData = [];  // Inicialize o array formattedData corretamente
+    
+    foreach ($res as $mentorship) {  // Itere sobre $res, que contém os dados da consulta
+        $formattedData[] = [
+            'id' => $mentorship['id'],
+            'title' => $mentorship['titulo'],
+            'description' => $mentorship['descricao'],
+            'goals' => $mentorship['objetivos'],
+            'duration' => $mentorship['duracao'],
+        ];
     }
-    return $data;
+    return $formattedData;
 }
 
 }
