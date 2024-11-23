@@ -10,7 +10,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $mentorships = new Mentorships();
         $data = $mentorships -> fetchMentorships();
-        echo $data;
+ 
         echo json_encode($data);
     }
     //Buscando Mentorias
