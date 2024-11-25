@@ -13,7 +13,7 @@ class Aunthenticator{
     public function login($email, $password){
         $con = $this->db->getCon();
         // query sql
-        $query = "SELECT senha, email, tiop FROM tbUser WHERE :email AND :senha";
+        $query = "SELECT senha, email, tiop FROM tbUser WHERE :email AND :senha ";
         $stmt = $con->prepare($query);
         $stmt -> execute();
     }
