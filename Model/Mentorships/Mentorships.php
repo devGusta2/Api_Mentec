@@ -204,6 +204,8 @@ class Mentorships{
         $conn = $dao -> getCon();
         //QUERY SQL - desativa as mentorias de acordo com o id
         $query = "UPDATE mentorias SET isActive = 'False' WHERE id = '$id'";
+        //prepara contra injeção SQL
+        $conn -> execute($query);
     }
 
 }
