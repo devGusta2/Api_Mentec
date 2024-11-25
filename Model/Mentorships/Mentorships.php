@@ -116,50 +116,47 @@ class Mentorships{
 
 
 
-    function mentorShipRegistration(
-        $title,
-        $description,
-        $target,
-        $goals,
-        $content,
-        $frequency,
-        $requirements,
-        $methods,
-        $teacher,
-        $place,
-        $payment,
-        $feedback,
-        $price,
-        $date_begin,
-        $duration,
-        ){
-        //instancia a conexão
+
+
+
+
+
+    //Função apra registrar novas mentorias
+
+    function mentorShipRegistration($data){
+        include_once('../../Model/Dao/Database.php');
         $dao = new Database();
-        // pega o metodo de buscar a conexao
-        $conn = $dao->getCon();
+        
+        //define a conexao;
+        $conn = $dao -> getCon();
 
-        //SQL
-        $query = "INSERT INTO Mentorias(
+        $sql = "INSERT INTO mentorias (
             titulo, 
-            descricao, 
-            publico_alvo, 
-            objetivos, 
+            descricao,
+            publico_alvo,  
+            objetivos,
             conteudo_programatico, 
-            duracao, 
-            frequencia, 
-            requisitos, 
-            metodologia, 
-            instrutor, 
-            data_inicio, 
-            local, 
-            valor, 
-            forma_pagamento, 
-            feedback
-        ) VALUES (
-            
-        )";
-
+            frequencia,
+            requisitos,
+            metodologia,
+            instrutor,
+            local,
+            forma_pagamento,
+            feedback,
+            valor,
+            data_inicio,
+            duracao
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $data[0], $data[1], $data[2], $data[3], $data[4], $data[5],
+            $data[6], $data[7], $data[8], $data[9], $data[10], $data[11],
+            $data[12], $data[13], $data[14]
+        ]);
     }
+     
+    
 
 
    
@@ -210,6 +207,29 @@ class Mentorships{
         $stmt -> execute();
     }
 
+    
+    //Função para redefinir as informações
+    function updateMentorship($idMentorship, $data) {
+        // Validações ou carregamento do objeto da base
+        $this->setTitle($data['title']);
+        $this->setDesc($data['description']);
+        $this->setTarget($data['target']);
+        $this->setGoals($data['goals']);
+        $this->setContent($data['content']);
+        $this->setFreq($data['frequency']);
+        $this->setRequi($data['requirements']);
+        $this->setMethod($data['methods']);
+        $this->setTeacher($data['teacher']);
+        $this->setPlace($data['place']);
+        $this->setPayment($data['payment']);
+        $this->setPrice($data['price']);
+        $this->setDate_begin($data['date_begin']);
+        $this->setDuration($data['duration']);
+        
+        // Salvar no banco de dados (exemplo)
+        // $this->saveToDatabase($idMentorship);
+    }
+    
 }
 
 
