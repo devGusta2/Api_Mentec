@@ -165,34 +165,46 @@ class Mentorships{
    
 
     //Função para buscar mentorias do banco
-function fetchMentorships(){
-    include_once('../../Model/Dao/Database.php');
-    //cria um novo objeto de banco de dados
-    $dao = new Database();
-    //obtem a coxão com o banco 
-    $conn = $dao -> getCon();
-    //como vou buscar as mentorias 
-    $query = "SELECT * FROM mentorias";
-    //prepara, se eu nao me engano contra SQL INJECTION
-    $stmt = $conn -> prepare($query);
-    //executa
-    $stmt -> execute();
-    //armazenando os dados em array
-    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Pega todos os dados do banco de dados
-    // Agora, use o array $res para preencher o array $formattedData
-    $formattedData = [];  // Inicialize o array formattedData corretamente
-    
-    foreach ($res as $mentorship) {  // Itere sobre $res, que contém os dados da consulta
-        $formattedData[] = [
-            'id' => $mentorship['id'],
-            'title' => $mentorship['titulo'],
-            'description' => $mentorship['descricao'],
-            'goals' => $mentorship['objetivos'],
-            'duration' => $mentorship['duracao'],
-        ];
+    function fetchMentorships(){
+        include_once('../../Model/Dao/Database.php');
+        //cria um novo objeto de banco de dados
+        $dao = new Database();
+        //obtem a coxão com o banco 
+        $conn = $dao -> getCon();
+        //como vou buscar as mentorias 
+        $query = "SELECT * FROM mentorias";
+        //prepara, se eu nao me engano contra SQL INJECTION
+        $stmt = $conn -> prepare($query);
+        //executa
+        $stmt -> execute();
+        //armazenando os dados em array
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Pega todos os dados do banco de dados
+        // Agora, use o array $res para preencher o array $formattedData
+        $formattedData = [];  // Inicialize o array formattedData corretamente
+        
+        foreach ($res as $mentorship) {  // Itere sobre $res, que contém os dados da consulta
+            $formattedData[] = [
+                'id' => $mentorship['id'],
+                'title' => $mentorship['titulo'],
+                'description' => $mentorship['descricao'],
+                'goals' => $mentorship['objetivos'],
+                'duration' => $mentorship['duracao'],
+            ];
+        }
+        return $formattedData;
     }
-    return $formattedData;
-}
+
+
+    function deactivateMentorship($id){
+        //incluindo o diretório onde está a conexao com o banco
+        include_once('../../Model/Dao/Database.php');
+        //criando objeto da conexao com o banco
+        $dao = new Database();
+        //criando a variavel de conexao com o banco
+        $conn = $dao -> getCon();
+        //QUERY SQL - desativa as mentorias de acordo com o id
+        $query = "UPDATE mentorias SET isActive = 'False' WHERE id = '$id'";
+    }
 
 }
 
