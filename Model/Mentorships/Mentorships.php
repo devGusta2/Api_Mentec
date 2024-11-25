@@ -172,7 +172,7 @@ class Mentorships{
         //obtem a coxão com o banco 
         $conn = $dao -> getCon();
         //como vou buscar as mentorias 
-        $query = "SELECT * FROM mentorias";
+        $query = "SELECT * FROM mentorias WHERE isActive = 1";
         //prepara, se eu nao me engano contra SQL INJECTION
         $stmt = $conn -> prepare($query);
         //executa
@@ -203,9 +203,11 @@ class Mentorships{
         //criando a variavel de conexao com o banco
         $conn = $dao -> getCon();
         //QUERY SQL - desativa as mentorias de acordo com o id
-        $query = "UPDATE mentorias SET isActive = 'False' WHERE id = '$id'";
+        $query = "UPDATE mentorias SET isActive = '0' WHERE id = '$id'";
         //prepara contra injeção SQL
-        $conn -> execute($query);
+        $stmt = $conn -> prepare($query);
+        //executa
+        $stmt -> execute();
     }
 
 }
