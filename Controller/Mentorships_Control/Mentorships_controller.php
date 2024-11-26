@@ -7,11 +7,12 @@
     //função que regista as mmentorias
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
-        //Buscando dados vindo do forms do REACT JS
-        $data = json_decode(file_get_contents('php://input'));
+        
         //pega só o método que foi chamado do raectj
         $method = $data -> action;
         if($method == 'createMentorship'){
+            //Buscando dados vindo do forms do REACT JS
+            $data = json_decode(file_get_contents('php://input'));
             //transforma em vetor
             $data = [
          
@@ -40,21 +41,11 @@
             $mentorships -> mentorShipRegistration($data);
 
         }else if($method == 'updateMentorship'){
-
+     
+            
         }else{
-            //desativando mentorias
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                //recebe os dados do REACT
-                $data = json_decode(file_get_contents('php://input'));
-                //define o id da mentoria
-                $id = $data -> id;
-                //busca o diretório no MODEL referente as mentorias
-                include_once('../../Model/Mentorships/Mentorships.php');
-                //cria novo objeto de mentorias
-                $mentorships = new Mentorships();
-                //busca o método de delete
-                $mentorships -> deactivateMentorship($id);
-            }            
+            
+                     
         }
         
     }
@@ -68,6 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $data = $mentorships -> fetchMentorships();
 
     echo json_encode($data);
+
 }
     
 
