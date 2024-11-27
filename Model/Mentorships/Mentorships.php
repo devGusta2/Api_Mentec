@@ -207,47 +207,50 @@ class Mentorships{
         $stmt -> execute();
     }
 
-    
-    //Função para redefinir as informações
+
+    // isso auqi redefine as informações
     function updateMentorship($idMentorship, $data) {
-        // Validações ou carregamento do objeto da base
-        $this->setTitle($data['title']);
-        $this->setDesc($data['description']);
-        $this->setTarget($data['target']);
-        $this->setGoals($data['goals']);
-        $this->setContent($data['content']);
-        $this->setFreq($data['frequency']);
-        $this->setRequi($data['requirements']);
-        $this->setMethod($data['methods']);
-        $this->setTeacher($data['teacher']);
-        $this->setPlace($data['place']);
-        $this->setPayment($data['payment']);
-        $this->setPrice($data['price']);
-        $this->setDate_begin($data['date_begin']);
-        $this->setDuration($data['duration']);
-        
-        // Salvar no banco de dados (exemplo)
-        // $this->saveToDatabase($idMentorship);
+        include_once('../../Model/Dao/Database.php');
+        $dao = new Database();
+        $conn = $dao->getCon();
+    
+        // Inicializa a query de update
+        $query = "UPDATE mentorias SET ";
+        $fields = [];
+    
+        if (!empty($data->title)) $fields[] = "titulo = :title";
+        if (!empty($data->goal)) $fields[] = "objetivos = :goal";
+        if (!empty($data->description)) $fields[] = "descricao = :description";
+    
+        // Adiciona apenas os campos que foram alterados
+        $query .= implode(", ", $fields) . " WHERE id = :id";
+              // $duration = $data->duration;
+        // $target = $data->target;
+        // $frequency = $data->frequency;
+        // $period = $data->period;
+        // $requirements = $data->requirements;
+        // $date_begin = $data->date_begin;
+        // $teacher = $data->teacher;
+        // $mode = $data->mode;
+      
+        // $content = $data->content;
+        // $methods = $data->methods;
+        // $place = $data->place;
+        // $payment = $data->payment;
+        // $feedback = $data->feedback;
+        // $price = $data->price;
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':id', $idMentorship, PDO::PARAM_INT);
+        if (!empty($data->title)) $stmt->bindParam(':title', $data->title, PDO::PARAM_STR);
+        if (!empty($data->goal)) $stmt->bindParam(':goal', $data->goal, PDO::PARAM_STR);
+        if (!empty($data->description)) $stmt->bindParam(':description', $data->description, PDO::PARAM_STR);
+    
+        $stmt->execute();
     }
+
+    
     
 }
-
-
-
-
-//conteuco
-//frequencia
-//metodologia
-
-//requisitos
-
-//instrutor
-
-//data inicio
-//local
-//valor
-//form pgto
-//feedback
 
 
 ?>

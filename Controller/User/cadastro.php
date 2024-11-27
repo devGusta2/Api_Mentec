@@ -16,4 +16,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 
-?>
+?>try{
+            const deactivateResponse = await axios.post('http://localhost/Api_mentec/controller/Mentorships_control/Mentorships_controller.php', idMentorship);
+        }catch(error){
+            console.log("Erro", error);
+        }
