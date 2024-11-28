@@ -9,8 +9,6 @@
     
         
         //pega só o método que foi chamado do raectj
-        $method = $data -> action;
-        if($method == 'createMentorship'){
             //Buscando dados vindo do forms do REACT JS
             $data = json_decode(file_get_contents('php://input'));
             //transforma em vetor
@@ -39,14 +37,6 @@
             $mentorships = new Mentorships();
             //busca o método de criar mentorias
             $mentorships -> mentorShipRegistration($data);
-
-        }else if($method == 'updateMentorship'){
-     
-            
-        }else{
-            
-                     
-        }
         
     }
 
