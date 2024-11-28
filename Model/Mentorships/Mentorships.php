@@ -123,7 +123,7 @@ class Mentorships{
 
     //Função apra registrar novas mentorias
 
-    function mentorShipRegistration($title, $goal){
+    function mentorShipRegistration($title, $goal, $description, $target, $content, $frequency, $requirements, $methods, $teacher, $place, $payment, $feedback, $price, $date_begin, $duration){
         include_once('../../Model/Dao/Database.php');
         $dao = new Database();
         
@@ -132,7 +132,25 @@ class Mentorships{
       
 
         //sintaxe SQL
-        $insert = "INSERT INTO mentorias (titulo , objetivos, descricao) VALUES ('$title','$goal','Teste')";
+        $insert = "INSERT INTO mentorias (
+        titulo,
+        descricao,
+        publico_alvo,
+        objetivos,
+        conteudo_programatico,
+        duracao,
+        frequencia,
+        requisitos,
+        metodologia,
+        instrutor,
+        data_inicio,
+        local,
+        valor,
+        forma_pagamento,
+        feedback
+        
+        ) VALUES ('$title','$description','$target','$goal','$content','$duration','$frequency','$requirements',
+        '$methods','$teacher','$date_begin','$place','0','$payment','$feedback')";
         $stmt = $conn -> prepare($insert);
         $stmt -> execute();
         // $sql = "INSERT INTO mentorias (
