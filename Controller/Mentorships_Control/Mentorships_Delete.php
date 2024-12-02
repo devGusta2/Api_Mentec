@@ -10,9 +10,9 @@
     //define o id da mentoria
     $id = $data -> id;
     //busca o diretório no MODEL referente as mentorias
-    include_once('../../Model/Mentorships/Mentorships.php');
+    include_once('../../Dao/MentorshipDao.php');
     //cria novo objeto de mentorias
-    $mentorships = new Mentorships();
+    $mentorships = new MentorshipsDAO();
     //busca o método de delete
     $mentorships -> deactivateMentorship($id);
     

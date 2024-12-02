@@ -10,9 +10,9 @@
         //busca o id da mentoria que vai ser atualizada
         $idMentorship = $data -> id;
         //obtem o diretorio das mentorias
-        include_once('../../Model/Mentorships/Mentorships.php');
+        include_once('../../Dao/MentorshipDao.php');
         //cria objeto das mentorias
-        $mentorships = new Mentorships();
+        $mentorships = new MentorshipsDAO();
         //busca o método de update
         $mentorships -> updateMentorship($idMentorship, $data);
      

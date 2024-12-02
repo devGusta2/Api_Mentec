@@ -5,7 +5,7 @@ class Database {
     private string $nome = "localhost";
     private string $password = "";
     private string $user = "root";
-    private string $database = "mentecDb";
+    private string $database = "mentecdb";
     // Variável da conexão
     private ?PDO $con = null;
 
