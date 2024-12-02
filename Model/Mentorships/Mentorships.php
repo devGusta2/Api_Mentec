@@ -21,7 +21,7 @@ class Mentorships{
     private int $duration;
 
     public function __construct($title,$description,$target,$goals,$content,$frequency,$requirements,
-        $methods,$teacher,$place,$payment,$feedback,$price,$date_begin,$duration) {
+        $methods,$teacher,$place,$feedback,$price,$date_begin,$duration) {
 
         $this->title = $title;
         $this->description = $description;
@@ -33,7 +33,7 @@ class Mentorships{
         $this->methods = $methods;
         $this->teacher = $teacher;
         $this->place = $place;
-        $this->payment = $payment;
+ 
         $this->feedback = $feedback;
         $this->price = 0;
         $this->date_begin = $date_begin;

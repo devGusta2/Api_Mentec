@@ -10,7 +10,7 @@
             $data = json_decode(file_get_contents('php://input'));
             
             $mentorship = new Mentorships(
-                0, // ID pode ser gerado automaticamente no banco
+                 // ID pode ser gerado automaticamente no banco
                 $data->title,
                 $data->description,
                 $data->target,
