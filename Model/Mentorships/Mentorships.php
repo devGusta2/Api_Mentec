@@ -2,27 +2,30 @@
 
 
 class Mentorships{
-    private int $id;
-    private string $title;
-    private string $description;
-    private string $target; //publico alvo
-    private string $goals;
-    private string $content;
-    private string $frequnecy; // semanal, diário, mensal ...
-    private string $requirements;
-    private string $methods;
-    private string $teacher;
-    private string $place;
-    private string $payment;
-    private string $feedback;
-
+    private ?string $title;
+    private ?string $description;
+    private ?string $target;
+    private ?string $goals;
+    private ?string $content;
+    private ?string $frequency;
+    private ?string $requirements;
+    private ?string $methods;
+    private ?string $teacher;
+    private ?string $place;
+    private ?string $payment;
+    private ?string $feedback;
     private float $price;
-    private DateTime $date_begin;    
-    private int $duration;
+    private ?DateTime $date_begin;
+    private ?int $duration;
+    
 
-    public function __construct($title,$description,$target,$goals,$content,$frequency,$requirements,
-        $methods,$teacher,$place,$feedback,$price,$date_begin,$duration) {
-
+    public function __construct(
+        ?string $title = null, ?string $description = null, ?string $target = null,
+        ?string $goals = null, ?string $content = null, ?string $frequency = null,
+        ?string $requirements = null, ?string $methods = null, ?string $teacher = null,
+        ?string $place = null, ?string $payment = null, ?string $feedback = null,
+        ?DateTime $date_begin = null, ?int $duration = null, ?float $price = 0, 
+    ) {
         $this->title = $title;
         $this->description = $description;
         $this->target = $target;
@@ -33,14 +36,18 @@ class Mentorships{
         $this->methods = $methods;
         $this->teacher = $teacher;
         $this->place = $place;
- 
+        $this->payment = $payment;
         $this->feedback = $feedback;
-        $this->price = 0;
+        $this->price = $price;
         $this->date_begin = $date_begin;
         $this->duration = $duration;
     }
+    
 
 
+    public function setId($id){
+        $this->id = $id;
+    }
     public function setTitle($title){
         $this->title = $title;
     }
@@ -85,6 +92,9 @@ class Mentorships{
     }
 
     //metodos getters
+    public function getId(){
+        return $this->id;
+    }
     public function getTitle(){
         return $this->title;
     }
