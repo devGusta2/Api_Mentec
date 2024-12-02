@@ -2,10 +2,10 @@
 
 class Database {
     // Variáveis de conexão com o banco de dados
-    private string $nome = "sql100.infinityfree.com";
-    private string $password = "mentec8080";
-    private string $user = "if0_37802286";
-    private string $database = "if0_37802286_mentecdb";
+    private string $nome = "localhost";
+    private string $password = "";
+    private string $user = "root";
+    private string $database = "mentecdb";
     // Variável da conexão
     private ?PDO $con = null;
 
